@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internships</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #22223b;
+      letter-spacing: 2px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+      padding: 32px 28px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform 0.18s, box-shadow 0.18s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #6366f1 0%, #60a5fa 100%);
+      opacity: 0.08;
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.025);
+      box-shadow: 0 16px 40px 0 rgba(31, 38, 135, 0.18);
+    }
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0 0 18px 0;
+      color: #3730a3;
+      z-index: 1;
+    }
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+      z-index: 1;
+    }
+    .card ul li {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 7px;
+      position: relative;
+      padding-left: 18px;
+    }
+    .card ul li::before {
+      content: '\2022';
+      color: #6366f1;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .card .btn {
+      display: inline-block;
+      padding: 10px 28px;
+      background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 2px 8px 0 rgba(99, 102, 241, 0.12);
+      transition: background 0.18s, transform 0.18s;
+      z-index: 1;
+    }
+    .card .btn:hover {
+      background: linear-gradient(90deg, #60a5fa 0%, #6366f1 100%);
+      transform: scale(1.06);
+      box-shadow: 0 4px 16px 0 rgba(99, 102, 241, 0.18);
+    }
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 2.1rem;
+      }
+      .container {
+        padding: 0 8px;
+      }
+      .card {
+        padding: 22px 12px 18px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Internships</h1>
+    <div class="grid">
+      <div class="card">
+        <h2>Web Development Internship Program</h2>
+        <ul>
+          <li>Duration: 1 month/2 months</li>
+          <li>Location: Virtual</li>
+          <li>Stipend: -</li>
+          <li>Start date: 05/11/2023</li>
+        </ul>
+        <a href="https://example.com/web-dev" class="btn" target="_blank">View Details</a>
+      </div>
+      <div class="card">
+        <h2>App Development Internship Program</h2>
+        <ul>
+          <li>Duration: 1 month/2 months</li>
+          <li>Location: Virtual</li>
+          <li>Stipend: -</li>
+          <li>Start date: 05/11/2023</li>
+        </ul>
+        <a href="https://example.com/app-dev" class="btn" target="_blank">View Details</a>
+      </div>
+      <div class="card">
+        <h2>Python Programming Internship Program</h2>
+        <ul>
+          <li>Duration: 1 month/2 months</li>
+          <li>Location: Virtual</li>
+          <li>Stipend: -</li>
+          <li>Start date: 05/11/2023</li>
+        </ul>
+        <a href="https://example.com/python" class="btn" target="_blank">View Details</a>
+      </div>
+      <div class="card">
+        <h2>Java Programming Internship Program</h2>
+        <ul>
+          <li>Duration: 1 month/2 months</li>
+          <li>Location: Virtual</li>
+          <li>Stipend: -</li>
+          <li>Start date: 05/11/2023</li>
+        </ul>
+        <a href="https://example.com/java" class="btn" target="_blank">View Details</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
