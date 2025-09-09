@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leslie's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Leslie's Portfolio</div>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="shade"></div>
+    </header>
+    <main>
+        <section class="firstSection">
+            <div class="leftSection">
+                Hello, I'm <span class="purple">Leslie</span>
+                <div>I'm a passionate</div>
+                <span id="element"></span>
+            </div>
+            <div class="rightSection">
+                <div class="carousel">
+                    <img id="carousel-image" src="psych.jpg" alt="Carousel image" />
+                </div>
+            </div>
+        </section>
+        <hr />
+        <section class="secondSection">
+            <span class="text-grey">Work that I have completed so far</span>
+            <h1>Work Experience</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Organization</th>
+                        <th>Role</th>
+                        <th>Period</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Prodigy Infotech</td>
+                        <td>Cybersecurity Intern</td>
+                        <td>July 2025</td>
+                        <td>Worked on Python-based cybersecurity projects and ethical hacking.</td>
+                    </tr>
+                    <tr style="background:#cfe8fc;">
+                        <td>Suvidha Foundation</td>
+                        <td>Web Development Intern</td>
+                        <td>Feb 2025 - Mar 2025</td>
+                        <td>Developed a responsive internship portal for web applications.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-first">Socials</div>
+        <div class="footer">
+            <ul>
+                <li><span>📞</span>9082644453</li>
+            </ul>
+            <ul>
+                <li><span>🔗</span>LinkedIn - lesliefdo</li>
+            </ul>
+            <ul>
+                <li><span>✉️</span>lesliefernando68@gmail.com</li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['Cybersecurity Analyst', 'Musician', 'Psychology Enthusiast', 'Video Editor'],
+            typeSpeed: 50,
+            backSpeed: 50,
+            loop: true
+        });
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+        const images = ['psych.jpg', 'mus.png', 'imgcb.png'];
+        let currentIndex = 0;
+        const carouselImage = document.getElementById('carousel-image');
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            else if (currentIndex >= images.length) currentIndex = 0;
+            carouselImage.src = images[currentIndex];
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            carouselImage.src = images[0];
+            setInterval(() => {
+                changeSlide(1);
+            }, 4000);
+        });
+    </script>
+</body>
+
+</html>

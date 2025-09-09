@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leslie's Portfolio - Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Projects</div>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="shade"></div>
+    </header>
+    <main>
+        <h1>My Projects</h1>
+        <div class="projects-list">
+            <div class="project">
+                <div class="project-title">F1 Analysis and Prediction Model</div>
+                <div class="project-desc">Developed a machine learning model that produces the outcome of Formula 1
+                    races.</div>
+            </div>
+            <div class="project">
+                <div class="project-title">Custom Wear 3D: Interactive Cloth Design</div>
+                <div class="project-desc">Built a system that integrates AI with 3D modeling to enhance customization
+                    and visualization for users.</div>
+            </div>
+            <div class="project">
+                <div class="project-title">Housie Game</div>
+                <div class="project-desc">Programmed an interface to facilitate the gameplay using Python.</div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-first">Socials</div>
+        <div class="footer">
+            <ul>
+                <li><span>📞</span>9082644453</li>
+            </ul>
+            <ul>
+                <li><span>🔗</span>LinkedIn - lesliefdo</li>
+            </ul>
+            <ul>
+                <li><span>✉️</span>lesliefernando68@gmail.com</li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>

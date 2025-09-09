@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leslie's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">About Me</div>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="shade"></div>
+    </header>
+    <main>
+        <section class="about-section">
+            <div class="image">
+                <img src="me.JPG" alt="Profile picture">
+            </div>
+            <div class="text">
+                <p>
+                    As a passionate musician with a deep love for the arts, I've found a new symphony in the world of
+                    computer engineering, where creativity meets logic. Currently immersed in my third year of studies,
+                    I'm on a journey to harmonize my musical talents with the technical prowess of engineering. Beyond
+                    the strings and keys, I find solace in the pages of literature and am captivated by the evolving
+                    landscapes of cybersecurity and artificial intelligence. With each chord strummed and code written,
+                    I'm shaping a future where innovation knows no bounds. Let's connect and orchestrate greatness
+                    together!
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-first">Socials</div>
+        <div class="footer">
+            <ul>
+                <li><span>📞</span>9082644453</li>
+            </ul>
+            <ul>
+                <li><span>🔗</span>LinkedIn - lesliefdo</li>
+            </ul>
+            <ul>
+                <li><span>✉️</span>lesliefernando68@gmail.com</li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>
