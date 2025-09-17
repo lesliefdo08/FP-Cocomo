@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Function Point & COCOMO Estimator</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Function Point & Basic COCOMO Estimation Tool</h1>
+    <p>A tool for you to estimate software project size and effort.</p>
+  </header>
+
+  <section>
+    <form id="fpForm">
+      <h2>Step 1: Enter counts and select complexity</h2>
+      <table>
+        <thead>
+          <tr>
+            <th rowspan="2">Function Type</th>
+            <th rowspan="2">Count</th>
+            <th colspan="3">Complexity</th>
+            <th rowspan="2">Count Total</th>
+          </tr>
+          <tr>
+            <th>Simple</th>
+            <th>Average</th>
+            <th>Complex</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>External Inputs (EI)</td>
+            <td><input type="number" min="0" value="0" id="EI_count" /></td>
+            <td><input type="radio" name="EI_complexity" value="3" checked /> 3</td>
+            <td><input type="radio" name="EI_complexity" value="4" /> 4</td>
+            <td><input type="radio" name="EI_complexity" value="6" /> 6</td>
+            <td><span id="EI_total">0</span></td>
+          </tr>
+          <tr>
+            <td>External Outputs (EO)</td>
+            <td><input type="number" min="0" value="0" id="EO_count" /></td>
+            <td><input type="radio" name="EO_complexity" value="4" checked /> 4</td>
+            <td><input type="radio" name="EO_complexity" value="5" /> 5</td>
+            <td><input type="radio" name="EO_complexity" value="7" /> 7</td>
+            <td><span id="EO_total">0</span></td>
+          </tr>
+          <tr>
+            <td>External Inquiries (EQ)</td>
+            <td><input type="number" min="0" value="0" id="EQ_count" /></td>
+            <td><input type="radio" name="EQ_complexity" value="3" checked /> 3</td>
+            <td><input type="radio" name="EQ_complexity" value="4" /> 4</td>
+            <td><input type="radio" name="EQ_complexity" value="6" /> 6</td>
+            <td><span id="EQ_total">0</span></td>
+          </tr>
+          <tr>
+            <td>Internal Logical Files (ILF)</td>
+            <td><input type="number" min="0" value="0" id="ILF_count" /></td>
+            <td><input type="radio" name="ILF_complexity" value="7" checked /> 7</td>
+            <td><input type="radio" name="ILF_complexity" value="10" /> 10</td>
+            <td><input type="radio" name="ILF_complexity" value="15" /> 15</td>
+            <td><span id="ILF_total">0</span></td>
+          </tr>
+          <tr>
+            <td>External Interface Files (EIF)</td>
+            <td><input type="number" min="0" value="0" id="EIF_count" /></td>
+            <td><input type="radio" name="EIF_complexity" value="5" checked /> 5</td>
+            <td><input type="radio" name="EIF_complexity" value="7" /> 7</td>
+            <td><input type="radio" name="EIF_complexity" value="10" /> 10</td>
+            <td><span id="EIF_total">0</span></td>
+          </tr>
+          <tr>
+            <th colspan="5">Grand Total</th>
+            <th><span id="grand_total">0</span></th>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Step 2: Rate 14 General System Characteristics (0-5)</h2>
+      <div id="gscContainer" class="gsc-container"></div>
+
+      <h2>Step 3: Select Project Type for Basic COCOMO</h2>
+      <select id="cocomoMode" aria-label="Select project type">
+        <option value="Organic">Organic</option>
+        <option value="Semi-Detached" selected>Semi-Detached</option>
+        <option value="Embedded">Embedded</option>
+      </select>
+
+      <button type="submit">Calculate Estimation</button>
+    </form>
+  </section>
+
+  <section id="resultsSection" class="results hidden">
+    <h2>Results</h2>
+    <pre id="resultsOutput"></pre>
+  </section>
+
+  <footer>
+    <small>A Leslie's Creation</small>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
