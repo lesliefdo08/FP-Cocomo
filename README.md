@@ -1,5 +1,6 @@
-Function Point Analysis & Basic COCOMO
-📌 Project Overview
+**Function Point Analysis & Basic COCOMO**
+
+**Project Overview**
 
 This project demonstrates two widely used software estimation techniques:
 
@@ -9,7 +10,7 @@ Basic COCOMO (Constructive Cost Model) – for estimating the effort, developmen
 
 Together, these methods provide a structured way to estimate software size, effort, cost, and productivity.
 
-🧾 Function Point Analysis
+**Function Point Analysis**
 Function Types & Complexity Weights
 Function Type	Simple	Average	Complex
 External Inputs (EI)	3	4	6
@@ -27,7 +28,7 @@ Applied Value Adjustment Factor (VAF) → Adjusted Function Points (AFP).
 
 Converted FP to estimated Lines of Code (LOC) (based on programming language).
 
-⚙️ Basic COCOMO
+**Basic COCOMO**
 COCOMO Categories
 
 Organic: Small, simple projects with small teams.
@@ -48,7 +49,7 @@ Embedded	3.6	1.20	2.5	0.32
  ┣ 📜 COCOMO_Calculations.docx # Stepwise Basic COCOMO Estimation
  ┣ 📜 README.md              # Project documentation
 
-🚀 How to Use
+**How to Use**
 
 Use the FPA method to calculate Function Points (FP).
 
@@ -58,7 +59,7 @@ Apply the Basic COCOMO equations to estimate effort and development time.
 
 Use the results for project planning, staffing, and cost estimation.
 
-🎯 Applications
+**Applications**
 
 Early-stage software project estimation
 
@@ -68,6 +69,6 @@ Comparison of different project development models
 
 Productivity benchmarking
 
-👨‍💻 Author
+**Author**
 
 Developed as part of a Software Engineering Lab Experiment on Software Project Estimation using FPA & Basic COCOMO.
