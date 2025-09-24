@@ -99,6 +99,11 @@ button {
 button:hover {
   background: #19554f;
   box-shadow: 0 9px 26px rgba(25,85,79,0.7);
+  transform: translateY(-2px);
+}
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(44,109,111,0.6);
 }
 
 .results {
