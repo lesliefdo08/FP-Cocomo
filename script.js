@@ -138,8 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
       resultText += `Average Staff Required = Effort / Development Time = ${fmt(staff,2)} persons\n\n`;
     }
 
-    resultText += `---\nNotes:\n- LOC/FP is approximate and depends on programming language and style.\n- Basic COCOMO ignores project-specific cost drivers (EAF) and scale factors; use Intermediate/COCOMO II for more accuracy.\n`;
-
     // Show results section
     const resultsSection = document.getElementById('resultsSection');
     const resultsOutput = document.getElementById('resultsOutput');
