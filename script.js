@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to get selected weight (now numeric value)
   function getSelectedWeight(type) {
-    const radios = document.getElementsByName(`${type}_complexity`);
+    const radios = document.querySelectorAll(`input[name="${type}_complexity"]`);
     for (const radio of radios) {
-      if (radio.checked) return parseInt(radio.value);
+      if (radio.checked) return parseFloat(radio.value) || 0;
     }
     return 0;
   }
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let grandTotal = 0;
     functionTypes.forEach(type => {
       const countInput = document.getElementById(`${type}_count`);
-      const count = parseInt(countInput.value) || 0;
+      const count = parseFloat(countInput.value) || 0;
       const weight = getSelectedWeight(type);
       const total = count * weight;
       document.getElementById(`${type}_total`).textContent = total;
@@ -55,8 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Attach event listeners
   functionTypes.forEach(type => {
-    document.getElementById(`${type}_count`).addEventListener('input', updateTotals);
-    const radios = document.getElementsByName(`${type}_complexity`);
+    const countEl = document.getElementById(`${type}_count`);
+    if (countEl) countEl.addEventListener('input', updateTotals);
+    const radios = document.querySelectorAll(`input[name="${type}_complexity"]`);
     radios.forEach(radio => {
       radio.addEventListener('change', updateTotals);
     });
@@ -71,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Validate GSC ratings and sum them
     let sumGSC = 0;
     for (let i = 0; i < gscQuestions.length; i++) {
-      let rating = parseInt(document.getElementById(`gsc_${i}`).value);
+      const el = document.getElementById(`gsc_${i}`);
+      let rating = parseInt(el.value);
       if (isNaN(rating) || rating < 0 || rating > 5) {
         alert(`Please enter a valid 0-5 rating for: "${gscQuestions[i]}"`);
         return;
@@ -79,13 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
       sumGSC += rating;
     }
 
-    const countTotal = parseInt(document.getElementById('grand_total').textContent);
+    const countTotal = parseFloat(document.getElementById('grand_total').textContent) || 0;
 
     // Calculate CAF and FP
     const CAF = 0.65 + 0.01 * sumGSC;
     const FP = countTotal * CAF;
 
-    // Basic COCOMO constants
+    // Basic COCOMO constants (unchanged)
     const cocomoConstants = {
       Organic: { a: 2.4, b: 1.05, c: 2.5, d: 0.38 },
       'Semi-Detached': { a: 3.0, b: 1.12, c: 2.5, d: 0.35 },
@@ -95,32 +97,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const mode = document.getElementById('cocomoMode').value;
     const { a, b, c, d } = cocomoConstants[mode];
 
-    // Convert FP to KLOC (100 LOC per FP)
-    const KLOC = FP * 100 / 1000;
+    // LOC per FP (configurable)
+    const locPerFP = parseFloat(document.getElementById('locPerFP').value) || 100;
+    const LOC = FP * locPerFP;
+    const KLOC = LOC / 1000;
 
-    // Calculate effort, dev time, staff
-    const effort = a * Math.pow(KLOC, b);
-    const devTime = c * Math.pow(effort, d);
-    const staff = effort / devTime;
+    // Calculate effort, dev time, staff (guard if KLOC is zero or tiny)
+    let effort = 0, devTime = 0, staff = 0;
+    if (KLOC > 0) {
+      effort = a * Math.pow(KLOC, b);
+      devTime = c * Math.pow(effort, d);
+      staff = devTime > 0 ? (effort / devTime) : 0;
+    }
 
     // Compose detailed result text
+    const fmt = (x, d = 2) => Number.isFinite(x) ? x.toFixed(d) : '0.00';
+
     let resultText = `Function Point Calculation Details:\n\n`;
     functionTypes.forEach(type => {
-      const count = parseInt(document.getElementById(`${type}_count`).value) || 0;
+      const count = parseFloat(document.getElementById(`${type}_count`).value) || 0;
       const weight = getSelectedWeight(type);
       const total = count * weight;
       resultText += `${type}: Count = ${count}, Weight = ${weight}, Total = ${total}\n`;
     });
-    resultText += `\nGrand Total = ${countTotal}\n`;
-    resultText += `Summation FI = ${sumGSC}\n`;
+    resultText += `\nUnadjusted Function Points (UFP) = ${countTotal}\n`;
+    resultText += `Summation FI (Sum of 14 GSC ratings) = ${sumGSC}\n`;
     resultText += `Complexity Adjustment Factor (CAF) = 0.65 + 0.01 * ${sumGSC} = ${CAF.toFixed(3)}\n`;
     resultText += `Final Adjusted Function Points (FP) = ${countTotal} * ${CAF.toFixed(3)} = ${FP.toFixed(3)}\n\n`;
+
     resultText += `Basic COCOMO Estimation Details:\n`;
     resultText += `Project Mode: ${mode}\n`;
-    resultText += `Estimated Size (KLOC): ${KLOC.toFixed(3)}\n`;
-    resultText += `Effort (Person-Months) = ${a} * (KLOC)^${b} = ${effort.toFixed(2)}\n`;
-    resultText += `Development Time (Months) = ${c} * (Effort)^${d} = ${devTime.toFixed(2)}\n`;
-    resultText += `Average Staff Required = Effort / Development Time = ${staff.toFixed(2)}\n`;
+    resultText += `LOC per FP used: ${locPerFP} LOC/FP\n`;
+    resultText += `Estimated Size: LOC = FP * LOC/FP = ${FP.toFixed(3)} * ${locPerFP} = ${LOC.toFixed(2)} LOC (${KLOC.toFixed(3)} KLOC)\n\n`;
+
+    if (KLOC <= 0) {
+      resultText += `NOTE: Estimated size (KLOC) is zero — COCOMO results are not meaningful.\n`;
+    } else {
+      resultText += `Effort (Person-Months) = a * (KLOC)^b = ${a} * (${KLOC.toFixed(3)})^${b} = ${fmt(effort,2)} PM\n`;
+      resultText += `Development Time (Months) = c * (Effort)^d = ${c} * (${fmt(effort,2)})^${d} = ${fmt(devTime,2)} months\n`;
+      resultText += `Average Staff Required = Effort / Development Time = ${fmt(staff,2)} persons\n\n`;
+    }
+
+    resultText += `---\nNotes:\n- LOC/FP is approximate and depends on programming language and style.\n- Basic COCOMO ignores project-specific cost drivers (EAF) and scale factors; use Intermediate/COCOMO II for more accuracy.\n`;
 
     // Show results section
     const resultsSection = document.getElementById('resultsSection');
