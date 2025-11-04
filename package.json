@@ -1,0 +1,70 @@
+{
+  "name": "fp-cocomo-calculator",
+  "version": "1.0.0",
+  "description": "Function Point & COCOMO Estimation Tool - Desktop Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "keywords": [
+    "function-point",
+    "cocomo",
+    "software-estimation",
+    "project-planning"
+  ],
+  "author": "Leslie Fernando",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "png-to-ico": "^3.0.1"
+  },
+  "build": {
+    "appId": "com.lesliefernando.fpcocomo",
+    "productName": "FP-COCOMO Calculator",
+    "copyright": "Copyright © 2025 Leslie Fernando",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "script.js",
+      "style.css",
+      "logo.png",
+      "logo.ico"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "icon": "logo.ico",
+      "signAndEditExecutable": false
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "icon.png",
+      "category": "public.app-category.developer-tools"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "icon.png",
+      "category": "Development"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

@@ -1,0 +1,91 @@
+# How to Create GitHub Release
+
+## Step-by-Step Instructions:
+
+### 1. Go to GitHub Releases Page
+Open this link: https://github.com/lesliefdo08/FP-Cocomo/releases/new
+
+### 2. Fill in Release Information
+
+**Tag version:** `v1.0.0`
+
+**Release title:** `FP-COCOMO Calculator v1.0.0`
+
+**Description:**
+```markdown
+# FP-COCOMO Calculator - Desktop Application
+
+Professional Function Point Analysis and COCOMO estimation tool for Windows.
+
+## ✨ What's New
+- Portable Windows executable
+- 100% offline functionality
+- No installation required
+- Full Function Point calculation
+- Basic COCOMO estimation (3 modes)
+- 14 General System Characteristics support
+
+## 📥 Download
+
+Download the `.exe` file below and double-click to run. No installation needed!
+
+## 💻 System Requirements
+- Windows 7 or later (64-bit)
+- 100 MB disk space
+- 512 MB RAM
+
+## ⚠️ Windows Security Note
+If Windows shows "Windows protected your PC":
+1. Click "More info"
+2. Click "Run anyway"
+(This is normal for unsigned applications)
+
+## 🌐 Prefer the Web Version?
+Visit: https://fpcocomo.netlify.app/
+
+---
+
+**File size:** ~68 MB  
+**Release date:** November 4, 2025  
+**Author:** Leslie Fernando
+```
+
+### 3. Upload the Executable File
+
+**Drag and drop this file into the "Attach binaries" section:**
+
+```
+File location: C:\Users\Leslie Fernando\Projects\FpCocomo\dist\FP-COCOMO Calculator 1.0.0.exe
+```
+
+**Important:** You may want to rename it to:
+`FP-COCOMO-Calculator-1.0.0.exe` (remove spaces for better compatibility)
+
+### 4. Publish Release
+
+Click the green **"Publish release"** button
+
+### 5. Share the Download Link
+
+After publishing, your download link will be:
+```
+https://github.com/lesliefdo08/FP-Cocomo/releases/download/v1.0.0/FP-COCOMO-Calculator-1.0.0.exe
+```
+
+Or share the releases page:
+```
+https://github.com/lesliefdo08/FP-Cocomo/releases
+```
+
+---
+
+## After Publishing:
+
+1. **Test the download link** - Make sure it works
+2. **Update your README** - Already done ✓
+3. **Share on social media** - LinkedIn, Twitter, etc.
+4. **Update Netlify site** - Add download button if desired
+
+---
+
+**That's it! Your software is now publicly downloadable!** 🎉

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Professional Function Point Analysis and COCOMO estimation tool. Calculate software project size, effort, and development time with mobile-responsive interface." />
+  <meta name="keywords" content="Function Point, COCOMO, COCOMO II, software estimation, project planning, development effort" />
+  <title>FP-COCOMO Calculator - Function Point & COCOMO Estimator</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="logo.png" alt="FP-COCOMO Logo" class="logo" />
+      <h1>Function Point & COCOMO Estimation Tool</h1>
+      <p>Estimate software project size and effort using Function Points, Basic COCOMO, and COCOMO II</p>
+    </header>
+
+    <section>
+      <form id="fpForm">
+        <h2>Step 1: Enter counts and select complexity</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th rowspan="2">Function Type</th>
+                <th rowspan="2">Count</th>
+                <th colspan="3">Complexity</th>
+                <th rowspan="2">Count Total</th>
+              </tr>
+              <tr>
+                <th>Simple</th>
+                <th>Average</th>
+                <th>Complex</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Function Type">External Inputs (EI)</td>
+                <td data-label="Count"><input type="number" min="0" value="0" id="EI_count" /></td>
+                <td data-label="Simple"><input type="radio" name="EI_complexity" value="3" checked /> 3</td>
+                <td data-label="Average"><input type="radio" name="EI_complexity" value="4" /> 4</td>
+                <td data-label="Complex"><input type="radio" name="EI_complexity" value="6" /> 6</td>
+                <td data-label="Total"><span id="EI_total">0</span></td>
+              </tr>
+              <tr>
+                <td data-label="Function Type">External Outputs (EO)</td>
+                <td data-label="Count"><input type="number" min="0" value="0" id="EO_count" /></td>
+                <td data-label="Simple"><input type="radio" name="EO_complexity" value="4" checked /> 4</td>
+                <td data-label="Average"><input type="radio" name="EO_complexity" value="5" /> 5</td>
+                <td data-label="Complex"><input type="radio" name="EO_complexity" value="7" /> 7</td>
+                <td data-label="Total"><span id="EO_total">0</span></td>
+              </tr>
+              <tr>
+                <td data-label="Function Type">External Inquiries (EQ)</td>
+                <td data-label="Count"><input type="number" min="0" value="0" id="EQ_count" /></td>
+                <td data-label="Simple"><input type="radio" name="EQ_complexity" value="3" checked /> 3</td>
+                <td data-label="Average"><input type="radio" name="EQ_complexity" value="4" /> 4</td>
+                <td data-label="Complex"><input type="radio" name="EQ_complexity" value="6" /> 6</td>
+                <td data-label="Total"><span id="EQ_total">0</span></td>
+              </tr>
+              <tr>
+                <td data-label="Function Type">Internal Logical Files (ILF)</td>
+                <td data-label="Count"><input type="number" min="0" value="0" id="ILF_count" /></td>
+                <td data-label="Simple"><input type="radio" name="ILF_complexity" value="7" checked /> 7</td>
+                <td data-label="Average"><input type="radio" name="ILF_complexity" value="10" /> 10</td>
+                <td data-label="Complex"><input type="radio" name="ILF_complexity" value="15" /> 15</td>
+                <td data-label="Total"><span id="ILF_total">0</span></td>
+              </tr>
+              <tr>
+                <td data-label="Function Type">External Interface Files (EIF)</td>
+                <td data-label="Count"><input type="number" min="0" value="0" id="EIF_count" /></td>
+                <td data-label="Simple"><input type="radio" name="EIF_complexity" value="5" checked /> 5</td>
+                <td data-label="Average"><input type="radio" name="EIF_complexity" value="7" /> 7</td>
+                <td data-label="Complex"><input type="radio" name="EIF_complexity" value="10" /> 10</td>
+                <td data-label="Total"><span id="EIF_total">0</span></td>
+              </tr>
+              <tr>
+                <th colspan="5">Grand Total</th>
+                <th><span id="grand_total">0</span></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Step 2: Rate 14 General System Characteristics (0-5)</h2>
+        <div id="gscContainer" class="gsc-container"></div>
+
+        <h2>Step 3: Select COCOMO Model</h2>
+        <div class="model-selector">
+          <label>
+            <input type="radio" name="cocomoModel" value="basic" checked />
+            <strong>Basic COCOMO (COCOMO 81)</strong> - Simple, uses KLOC only
+          </label>
+          <label>
+            <input type="radio" name="cocomoModel" value="cocomo2" />
+            <strong>COCOMO II (Application Composition)</strong> - Advanced, uses Object Points
+          </label>
+        </div>
+
+        <!-- Basic COCOMO Configuration -->
+        <div id="basicCocomoConfig" class="cocomo-config">
+          <h3>Basic COCOMO Settings</h3>
+          <label for="cocomoMode">Project Type:</label>
+          <select id="cocomoMode" aria-label="Select project type">
+            <option value="Organic">Organic</option>
+            <option value="Semi-Detached" selected>Semi-Detached</option>
+            <option value="Embedded">Embedded</option>
+          </select>
+
+          <div class="loc-per-fp">
+            <label for="locPerFP">LOC per Function Point (approx.):</label>
+            <input id="locPerFP" type="number" min="1" value="100" step="1" aria-label="LOC per Function Point" />
+            <small class="hint">Adjust this based on language (e.g., Python ~20-50, Java ~50-100, C ~100+)</small>
+          </div>
+        </div>
+
+        <!-- COCOMO II Configuration -->
+        <div id="cocomo2Config" class="cocomo-config hidden">
+          <h3>COCOMO II - Application Composition Model</h3>
+          
+          <h4>Object Counts</h4>
+          <div class="object-inputs">
+            <div class="input-group">
+              <label for="numScreens">Number of Screens:</label>
+              <input type="number" id="numScreens" min="0" value="0" />
+            </div>
+            <div class="input-group">
+              <label for="numReports">Number of Reports:</label>
+              <input type="number" id="numReports" min="0" value="0" />
+            </div>
+            <div class="input-group">
+              <label for="num3GLComponents">Number of 3GL Components:</label>
+              <input type="number" id="num3GLComponents" min="0" value="0" />
+            </div>
+          </div>
+
+          <h4>Complexity Classification</h4>
+          <div class="complexity-grid">
+            <div class="complexity-item">
+              <label>Screens Complexity:</label>
+              <select id="screenComplexity">
+                <option value="1">Simple (1)</option>
+                <option value="2" selected>Medium (2)</option>
+                <option value="3">Difficult (3)</option>
+              </select>
+              <small>Views &lt; 4, Tables &lt; 4, Servers &lt; 2, Clients &lt; 2 = Simple</small>
+            </div>
+            <div class="complexity-item">
+              <label>Reports Complexity:</label>
+              <select id="reportComplexity">
+                <option value="2">Simple (2)</option>
+                <option value="5" selected>Medium (5)</option>
+                <option value="8">Difficult (8)</option>
+              </select>
+              <small>Sections &lt; 4, Tables &lt; 4, Servers &lt; 2, Clients &lt; 2 = Simple</small>
+            </div>
+            <div class="complexity-item">
+              <label>3GL Components Complexity:</label>
+              <select id="componentComplexity">
+                <option value="10" selected>Simple (10)</option>
+              </select>
+              <small>3GL components are typically weighted at 10</small>
+            </div>
+          </div>
+
+          <h4>Reuse & Productivity</h4>
+          <div class="input-group">
+            <label for="reusePercent">Percentage of Reuse (%):</label>
+            <input type="number" id="reusePercent" min="0" max="100" value="0" />
+            <small>Estimated % of object points that will be reused</small>
+          </div>
+
+          <div class="input-group">
+            <label for="devExperience">Developer's Experience & Capability:</label>
+            <select id="devExperience">
+              <option value="4">Very Low (PROD = 4)</option>
+              <option value="7">Low (PROD = 7)</option>
+              <option value="13" selected>Nominal (PROD = 13)</option>
+              <option value="25">High (PROD = 25)</option>
+              <option value="50">Very High (PROD = 50)</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit">Calculate Estimation</button>
+      </form>
+    </section>
+
+    <section id="resultsSection" class="results hidden" aria-live="polite">
+      <h2>Results</h2>
+      <pre id="resultsOutput"></pre>
+    </section>
+
+    <footer>
+      <small>Made by Leslie Fernando © 2025 | <a href="https://github.com/lesliefdo08/FP-Cocomo" target="_blank" style="color: #3a776d; text-decoration: none;">GitHub</a></small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
