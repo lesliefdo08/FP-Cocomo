@@ -9,19 +9,23 @@ function createWindow() {
     height: 900,
     minWidth: 800,
     minHeight: 600,
+    show: true, // Show immediately
     icon: path.join(__dirname, 'logo.ico'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
       enableRemoteModule: false,
-      // Disable GPU acceleration for better compatibility
-      disableHardwareAcceleration: true
+      devTools: false // Disable dev tools for end users
     },
     backgroundColor: '#8bd3c7',
     title: 'FP-COCOMO Calculator'
   });
 
+  // Load file and show window immediately
   mainWindow.loadFile('index.html');
+  
+  // Remove menu bar for cleaner look (optional)
+  // mainWindow.setMenuBarVisibility(false);
 
   // Create application menu
   const template = [

@@ -1,0 +1,37 @@
+FP-COCOMO CALCULATOR - HOW TO USE
+=================================
+
+DOWNLOAD AND RUN:
+-----------------
+1. Download the .exe file (e.g., "FP-COCOMO Calculator 1.0.0.exe")
+2. Double-click the .exe file to run
+3. The application will open immediately - NO INSTALLATION NEEDED!
+
+SHARING WITH OTHERS:
+-------------------
+- This is a PORTABLE application
+- Just share the .exe file via Google Drive, email, or USB
+- Others can run it directly - no installation required
+- Works on any Windows PC (Windows 10/11)
+
+IF IT DOESN'T OPEN:
+------------------
+1. Make sure you downloaded the complete file (should be around 70MB)
+2. Right-click the file → Properties → Unblock (if there's a security warning)
+3. Try running as Administrator (right-click → Run as Administrator)
+4. Windows Defender might scan it first time - this is normal, just wait
+
+FEATURES:
+---------
+- Function Point Analysis
+- Basic COCOMO Estimation (Organic, Semi-Detached, Embedded)
+- COCOMO II Application Composition Model
+- No internet required - works 100% offline
+
+TROUBLESHOOTING:
+---------------
+- If loading takes time: Windows antivirus is scanning it (first time only)
+- If blocked by Windows: Click "More info" → "Run anyway"
+- Shared via Drive: Make sure to DOWNLOAD it first, don't try to run from Drive directly
+
+For support: https://github.com/lesliefdo08/FP-Cocomo

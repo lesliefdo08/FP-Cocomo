@@ -28,6 +28,51 @@ header, footer { text-align: center; margin-bottom: 35px; }
   filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
 }
 
+.download-section {
+  margin-top: 25px;
+  padding: 20px;
+  background: linear-gradient(135deg, #2c6d6f, #3a776d);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(44, 109, 111, 0.3);
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: white;
+  color: #2c6d6f;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.download-button:hover {
+  background: #f0f7f6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.download-button svg {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.download-section small {
+  display: block;
+  margin-top: 12px;
+  color: #f0f7f6;
+  font-size: 0.9rem;
+}
+
 h1 {
   color: #2c6d6f; margin-bottom: 0.3em;
   font-size: 2.4rem; font-weight: 700; letter-spacing: 1px;
